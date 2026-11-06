@@ -1,0 +1,31 @@
+<section class="pagina-canciones">
+
+  <div class="encabezado">
+    <p class="subtitulo">LA MÚSICA QUE MARCÓ UNA ÉPOCA</p>
+    <h1>CANCIONES</h1>
+    <p>Descubrí algunos de los grandes temas de Soda Stereo.</p>
+  </div>
+
+  <p class="contador-favoritas">
+    ⭐ Canciones favoritas: {{ favoritas.length }}
+  </p>
+
+  <div class="contenedor-canciones">
+
+    @for (cancion of canciones; track cancion.id) {
+      <app-cancion-card
+        [cancion]="cancion"
+        [esFavorita]="favoritas.includes(cancion.id)"
+        (favorita)="marcarFavorita($event)">
+      </app-cancion-card>
+    }
+
+    @if (canciones.length === 0) {
+      <p class="sin-canciones">
+        Todavía no hay canciones disponibles.
+      </p>
+    }
+
+  </div>
+
+</section>
